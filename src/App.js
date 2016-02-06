@@ -14,12 +14,19 @@ export default class App extends Component {
         this.base.syncState('name', {
             context: this,
             state: 'name'
-        })
+        });
     }
 
     render() {
         return (
-            <h1>Hello, {this.state.name}</h1>
+            <div>
+                <h1>Hello, {this.state.name}</h1>
+                <input onChange={(event) => {
+                        this.setState({
+                            name: event.target.value
+                        })
+                    }} value={this.state.name}></input>
+            </div>
         );
     }
 }
