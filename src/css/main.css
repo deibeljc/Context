@@ -1,0 +1,16 @@
+.message {
+    border-radius: 1px;
+    height: inherit;
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+}
+
+.fixed-bottom {
+    bottom: 0;
+    position: fixed;
+}
+
+input.message-input {
+    width: 100%;
+}
