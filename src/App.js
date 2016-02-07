@@ -23,13 +23,15 @@ export default class App extends Component {
     render() {
         let messages = this.state.messages;
         return (
-            <div className="container">
-                {messages.map(function(message) {
-                    return <Message
-                        key={message.key}
-                        message={message.value}
-                        sender={message.sender} />
-                })}
+            <div>
+                <div className="container">
+                    {messages.map(function(message) {
+                        return <Message
+                            key={message.key}
+                            message={message.value}
+                            sender={message.sender} />
+                    })}
+                </div>
                 <Input />
             </div>
         );
