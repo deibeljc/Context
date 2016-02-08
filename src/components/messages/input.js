@@ -11,24 +11,22 @@ export default class Input extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.ref = this.base.syncState('messages', {
-            context: this,
-            state: 'messages',
-            asArray: true
-        });
-    }
-
     componentWillUnmount() {
         this.base.removeBinding(this.ref);
     }
 
-    handleClick(event) {
-        this.setState({
-            messages: this.state.messages.concat({
+    handleSending() {
+        // Push to firebase once you click then clear the state.
+        this.base.push('messages', {
+            data: {
                 sender: "Jon",
                 value: this.state.inputValue
-            })
+            },
+            then: () => {
+                this.setState({
+                    inputValue: ""
+                });
+            }
         });
     }
 
@@ -50,7 +48,7 @@ export default class Input extends React.Component {
                             </input>
                             <span className="input-group-btn">
                                 <button
-                                    onClick={this.handleClick.bind(this)}
+                                    onClick={this.handleSending.bind(this)}
                                     className="btn btn-secondary"
                                     type="button">
                                     Send
