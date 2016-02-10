@@ -20,7 +20,6 @@ export default class MessageBuilder {
                     });
                     messageArr.push(foundMessage);
                 });
-                message.child = [];
                 message.child = messageArr;
             }
         });
