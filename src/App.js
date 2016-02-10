@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Rebase from 're-base';
 import Message from './components/messages/message';
 import Input from './components/messages/input';
+import MessageBuilder from './utils/message-builder';
 
 export default class App extends Component {
     constructor(props) {
@@ -21,15 +22,17 @@ export default class App extends Component {
     }
 
     render() {
-        let messages = this.state.messages;
+        let messages = new MessageBuilder(this.state.messages).getMessageTree();
+
         return (
             <div>
                 <div className="container">
                     {messages.map(function(message) {
                         return <Message
                             key={message.key}
-                            message={message.value}
-                            sender={message.sender} />
+                            message={message}
+                            sender={message.sender}
+                            childrenMessages={[message.child]} />
                     })}
                 </div>
                 <Input />
