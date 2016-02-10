@@ -11,10 +11,17 @@ export default class MessageBuilder {
 
     _messageBuilder() {
         // Start the tree with the first message
-        this.messages.map((message) => {
+        _.forEach(this.messages, (message, key) => {
             if (message.child) {
-                let messageObj = _.find(this.messages, (obj) => {return obj.key === message.child});
-                message.child = messageObj;
+                let messageArr = [];
+                _.forEach(message.child, (childKey) => {
+                    let foundMessage = _.find(this.messages, (obj) => {
+                        return obj.key == childKey
+                    });
+                    messageArr.push(foundMessage);
+                });
+                message.child = [];
+                message.child = messageArr;
             }
         });
         return this.messages || [];

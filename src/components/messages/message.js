@@ -20,7 +20,7 @@ export default class Message extends React.Component {
         }
 
         return (
-            <div data-id={this.props.messageKey} className="message col-sm-12">
+            <div data-id={this.props.message.key} className="message col-sm-12">
                 <div className="col-xs-2">
                     {this.props.sender}
                 </div>

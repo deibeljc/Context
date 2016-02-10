@@ -3,6 +3,7 @@ import Rebase from 're-base';
 import Message from './components/messages/message';
 import Input from './components/messages/input';
 import MessageBuilder from './utils/message-builder';
+import _ from 'lodash';
 
 export default class App extends Component {
     constructor(props) {
@@ -28,11 +29,13 @@ export default class App extends Component {
             <div>
                 <div className="container">
                     {messages.map(function(message) {
-                        return <Message
-                            key={message.key}
-                            message={message}
-                            sender={message.sender}
-                            childrenMessages={[message.child]} />
+                        if (!message.isChild) { 
+                            return <Message
+                                key={message.key}
+                                message={message}
+                                sender={message.sender}
+                                childrenMessages={message.child} />
+                        }
                     })}
                 </div>
                 <Input />
