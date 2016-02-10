@@ -14,7 +14,8 @@ export default class Message extends React.Component {
                     <Message
                         key={message.key}
                         message={message}
-                        sender={message.sender} />
+                        sender={message.sender}
+                        childrenMessages={message.child} />
                 )
             })
         }

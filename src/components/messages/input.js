@@ -20,7 +20,8 @@ export default class Input extends React.Component {
         this.base.push('messages', {
             data: {
                 sender: "Jon",
-                value: this.state.inputValue
+                value: this.state.inputValue,
+                isChild: false
             },
             then: () => {
                 this.setState({
