@@ -9,6 +9,7 @@ export default class Input extends React.Component {
         this.base = Rebase.createClass('https://context-prototype.firebaseio.com/');
         this.state = {
             messages: {},
+            parentMessage: false,
             inputValue: ""
         }
     }
@@ -27,14 +28,30 @@ export default class Input extends React.Component {
     setParentMessage(message, data) {
         console.log(message);
         console.log(data);
+        this.setState({
+            parentMessage: data
+        });
     }
 
     handleSending() {
+        // Branch to the correct response
+        this.state.parentMessage
+            ? this.sendChildMessage()
+            : this.sendRootMessage();
+    }
+
+    sendChildMessage() {
+        console.log("Not implemented!");
+    }
+
+    sendRootMessage() {
         // Push to firebase once you click then clear the state.
         this.base.push('messages', {
             data: {
                 sender: "Jon",
                 value: this.state.inputValue,
+                parentMessage: false,
+                childMessages: false,
                 isChild: false
             },
             then: () => {

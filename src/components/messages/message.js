@@ -20,7 +20,7 @@ export default class Message extends React.Component {
                         key={message.key}
                         message={message}
                         sender={message.sender}
-                        childrenMessages={message.child} />
+                        childrenMessages={message.childMessages} />
                 )
             })
         }

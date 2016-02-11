@@ -29,12 +29,12 @@ export default class App extends Component {
             <div>
                 <div className="container">
                     {messages.map(function(message) {
-                        if (!message.isChild) { 
+                        if (!message.isChild) {
                             return <Message
                                 key={message.key}
                                 message={message}
                                 sender={message.sender}
-                                childrenMessages={message.child} />
+                                childrenMessages={message.childMessages} />
                         }
                     })}
                 </div>

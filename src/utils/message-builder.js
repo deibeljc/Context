@@ -10,17 +10,19 @@ export default class MessageBuilder {
     }
 
     _messageBuilder() {
-        // Start the tree with the first message
         _.forEach(this.messages, (message, key) => {
-            if (message.child) {
-                let messageArr = [];
-                _.forEach(message.child, (childKey) => {
-                    let foundMessage = _.find(this.messages, (obj) => {
-                        return obj.key == childKey
-                    });
-                    messageArr.push(foundMessage);
+            if (message.parentMessage) {
+                let foundParent = _.find(this.messages, (obj) => {
+                    return obj.key == message.parentMessage;
                 });
-                message.child = messageArr;
+                if (foundParent) {
+                    // If it has no messages, initialize it to be an empty array.
+                    if (typeof foundParent.childMessages === "boolean") {
+                        foundParent.childMessages = [];
+                    }
+                    // Push our message into that array!
+                    foundParent.childMessages.push(message);
+                }
             }
         });
         return this.messages || [];
