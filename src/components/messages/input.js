@@ -1,5 +1,7 @@
 import React from 'react';
 import Rebase from 're-base';
+import PubSub from 'pubsub-js';
+
 
 export default class Input extends React.Component {
     constructor(props) {
@@ -11,8 +13,20 @@ export default class Input extends React.Component {
         }
     }
 
+    componentWillMount() {
+        this.pubsub = PubSub.subscribe('newMessage', this.setParentMessage.bind(this));
+    }
+
     componentWillUnmount() {
+        // Unmount re-base.
         this.base.removeBinding(this.ref);
+        // Unsubscribe to a binding
+        PubSub.unsubscribe(this.pubsub);
+    }
+
+    setParentMessage(message, data) {
+        console.log(message);
+        console.log(data);
     }
 
     handleSending() {
@@ -39,7 +53,7 @@ export default class Input extends React.Component {
         return (
             <div className="container fixed-bottom">
                 <div className="row">
-                    <div className="col-lg-12">
+                    <div className="col-md-12">
                         <div className="input-group">
                             <input type="text"
                                 className="form-control message-input"

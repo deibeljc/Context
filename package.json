@@ -30,6 +30,7 @@
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.0",
     "lodash": "^4.3.0",
+    "pubsub-js": "^1.5.3",
     "re-base": "^1.5.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
