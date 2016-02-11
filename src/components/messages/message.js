@@ -1,5 +1,6 @@
 import React from 'react';
 import PubSub from 'pubsub-js';
+import _ from 'lodash';
 
 export default class Message extends React.Component {
     constructor(props) {
@@ -9,6 +10,10 @@ export default class Message extends React.Component {
 
     onReplyClick(event) {
         PubSub.publish('newMessage', this.props.message.key);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return !_.isEqual(this.props, nextProps);
     }
 
     render() {

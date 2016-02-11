@@ -19,12 +19,11 @@ export default class App extends Component {
             context: this,
             state: 'messages',
             asArray: true
-        })
+        });
     }
 
     render() {
         let messages = new MessageBuilder(this.state.messages).getMessageTree();
-
         return (
             <div>
                 <div className="container">

@@ -10,10 +10,6 @@ export default class MessageBuilder {
     }
 
     _messageBuilder() {
-        // TODO: Make this more efficient.
-        // Maybe store the results of this into the App state and then send in
-        // a message to add into the state rather than rebuild it everytime a
-        // new message has been added
         _.forEach(this.messages, (message, key) => {
             if (message.parentMessage) {
                 let foundParent = _.find(this.messages, (obj) => {
