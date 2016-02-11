@@ -41,7 +41,21 @@ export default class Input extends React.Component {
     }
 
     sendChildMessage() {
-        console.log("Not implemented!");
+        // Push to firebase once you click then clear the state.
+        this.base.push('messages', {
+            data: {
+                sender: "Jon",
+                value: this.state.inputValue,
+                parentMessage: this.state.parentMessage,
+                childMessages: false,
+                isChild: true
+            },
+            then: () => {
+                this.setState({
+                    inputValue: ""
+                });
+            }
+        });
     }
 
     sendRootMessage() {
