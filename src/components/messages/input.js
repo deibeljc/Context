@@ -33,7 +33,6 @@ export default class Input extends React.Component {
         });
     }
 
-
     handleEnterSend(event) {
         if (event.key === 'Enter') {
             this.handleSending();

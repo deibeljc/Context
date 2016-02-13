@@ -48,7 +48,9 @@ export default class Message extends React.Component {
                         </button>
                     </div>
                 </div>
-                {childrenMessages}
+                <div className="children-messages">
+                    {childrenMessages}
+                </div>
             </div>
         );
     }
