@@ -14,7 +14,7 @@
 }
 
 .message-container {
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -22,11 +22,17 @@
     margin-right: -1px;
 }
 
+.fixed-side {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
 .fixed-bottom {
     position: fixed;
     width: 100%;
     padding: 0;
-    box-shadow: 0px 3px 12px 0px #555;
+    box-shadow: 10px 3px 12px 0px #555;
     border-radius: 0;
     bottom: 0;
 }

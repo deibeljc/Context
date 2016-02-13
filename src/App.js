@@ -26,18 +26,25 @@ export default class App extends Component {
         let messages = new MessageBuilder(this.state.messages).getMessageTree();
         return (
             <div>
-                <div className="message-container container-fluid">
-                    {messages.map(function(message) {
-                        if (!message.isChild) {
-                            return <Message
-                                key={message.key}
-                                message={message}
-                                sender={message.sender}
-                                childrenMessages={message.childMessages} />
-                        }
-                    })}
+                <div className="col-sm-3">
+                    <div className="fixed-side">
+                        Logged in as Jon
+                    </div>
                 </div>
-                <Input />
+                <div className="col-sm-9">
+                    <div className="message-container container-fluid">
+                        {messages.map(function(message) {
+                            if (!message.isChild) {
+                                return <Message
+                                    key={message.key}
+                                    message={message}
+                                    sender={message.sender}
+                                    childrenMessages={message.childMessages} />
+                            }
+                        })}
+                    </div>
+                    <Input />
+                </div>
             </div>
         );
     }
