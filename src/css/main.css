@@ -13,10 +13,6 @@
     min-height: 60px;
 }
 
-.message.child {
-    border-top: 1px solid #999;
-}
-
 .message-container {
     padding-bottom: 50px;
 }
