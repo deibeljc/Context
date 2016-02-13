@@ -27,7 +27,7 @@ export default class Message extends React.Component {
                         sender={message.sender}
                         childrenMessages={message.childMessages} />
                 )
-            })
+            });
         }
 
         return (
