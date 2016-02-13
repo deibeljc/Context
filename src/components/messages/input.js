@@ -99,7 +99,7 @@ export default class Input extends React.Component {
                                 {this.state.parentMessage || "Root"}
                             </span>
                             <input type="text"
-                                style={{height: "50px"}}
+                                style={{height: "50px", borderRadius: "0"}}
                                 id="message-input"
                                 className="form-control message-input"
                                 placeholder="Message..."
@@ -110,7 +110,7 @@ export default class Input extends React.Component {
                             <span className="input-group-btn">
                                 <button
                                     onClick={this.handleSending.bind(this)}
-                                    style={{height: "50px"}}
+                                    style={{height: "50px", borderRadius: "0"}}
                                     className="btn btn-secondary"
                                     type="button">
                                     Send
