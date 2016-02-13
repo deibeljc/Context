@@ -44,8 +44,8 @@ export default class Input extends React.Component {
         // Branch to the correct response
         if (this.state.inputValue.length > 0) {
             this.state.parentMessage
-                ? this.sendChildMessage()
-                : this.sendRootMessage();
+            ? this.sendChildMessage()
+            : this.sendRootMessage();
         }
     }
 
@@ -91,11 +91,16 @@ export default class Input extends React.Component {
 
     render() {
         return (
-            <div className="container fixed-bottom">
+            <div className="container-fluid fixed-bottom">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-xs-12">
                         <div className="input-group">
+                            <span className="input-group-addon" id="basic-addon3">
+                                {this.state.parentMessage || "Root"}
+                            </span>
                             <input type="text"
+                                style={{height: "50px"}}
+                                id="message-input"
                                 className="form-control message-input"
                                 placeholder="Message..."
                                 onChange={this.handleChange.bind(this)}
@@ -105,6 +110,7 @@ export default class Input extends React.Component {
                             <span className="input-group-btn">
                                 <button
                                     onClick={this.handleSending.bind(this)}
+                                    style={{height: "50px"}}
                                     className="btn btn-secondary"
                                     type="button">
                                     Send

@@ -26,7 +26,7 @@ export default class App extends Component {
         let messages = new MessageBuilder(this.state.messages).getMessageTree();
         return (
             <div>
-                <div className="container">
+                <div className="container-fluid">
                     {messages.map(function(message) {
                         if (!message.isChild) {
                             return <Message
