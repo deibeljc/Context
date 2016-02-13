@@ -10,6 +10,7 @@ export default class MessageBuilder {
     }
 
     _messageBuilder() {
+        var start = new Date().getMilliseconds();
         _.forEach(this.messages, (message, key) => {
             if (message.parentMessage) {
                 let foundParent = _.find(this.messages, (obj) => {
@@ -25,6 +26,9 @@ export default class MessageBuilder {
                 }
             }
         });
+        var end = new Date().getMilliseconds();
+        var time = end - start;
+        console.log('Execution time: ' + time);
         return this.messages || [];
     }
 }

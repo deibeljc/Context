@@ -33,11 +33,20 @@ export default class Input extends React.Component {
         });
     }
 
+
+    handleEnterSend(event) {
+        if (event.key === 'Enter') {
+            this.handleSending();
+        }
+    }
+
     handleSending() {
         // Branch to the correct response
-        this.state.parentMessage
-            ? this.sendChildMessage()
-            : this.sendRootMessage();
+        if (this.state.inputValue.length > 0) {
+            this.state.parentMessage
+                ? this.sendChildMessage()
+                : this.sendRootMessage();
+        }
     }
 
     sendChildMessage() {
@@ -90,6 +99,7 @@ export default class Input extends React.Component {
                                 className="form-control message-input"
                                 placeholder="Message..."
                                 onChange={this.handleChange.bind(this)}
+                                onKeyPress={this.handleEnterSend.bind(this)}
                                 value={this.state.inputValue}>
                             </input>
                             <span className="input-group-btn">
